@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------------- */
+/* GLOBAL RESET & SMOOTHING                                                   */
+/* -------------------------------------------------------------------------- */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Stops double scroll bars from breaking the gradient canvas */
+}
+
+/* -------------------------------------------------------------------------- */
+/* TAILWIND CUSTOM CLASSES OVERRIDES                                          */
+/* -------------------------------------------------------------------------- */
+
+/* Custom styling for individual message component layouts */
+.chat-bubble-user {
+  @apply bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-3xl rounded-tr-none shadow-md font-medium;
+}
+
+.chat-bubble-bot {
+  @apply bg-white bg-opacity-80 text-gray-800 rounded-3xl rounded-tl-none border border-blue-100 shadow-sm backdrop-blur-sm;
+}
+
+/* Rounded, clean navigation tracking styling updates */
+.live-badge {
+  @apply bg-emerald-100 text-emerald-700 border border-emerald-200 shadow-sm;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CUSTOM ANIMATIONS                                                         */
+/* -------------------------------------------------------------------------- */
+@keyframes bubbleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: bubbleFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SCROLLBAR CUSTOMIZATION FOR CHAT CONTAINER                                 */
+/* -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4); /* Tailwind Slate-400 transparent fallback */
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.6); /* Tailwind Slate-500 hover color */
+}
